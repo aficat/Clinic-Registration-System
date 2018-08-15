@@ -1,0 +1,55 @@
+CREATE TABLE `staffentity` (
+  `STAFFID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `FIRSTNAME` varchar(255) DEFAULT NULL,
+  `LASTNAME` varchar(255) DEFAULT NULL,
+  `USERNAME` varchar(255) DEFAULT NULL,
+  `PASSWORD` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`STAFFID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `staffentity` WRITE;
+INSERT INTO `staffentity` VALUES 
+(1,'Linda','Chua','manager','password'),
+(2,'Barbara','Durham','nurse','password');
+UNLOCK TABLES;
+
+CREATE TABLE `doctorentity` (
+  `DOCTORID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `FIRSTNAME` varchar(255) DEFAULT NULL,
+  `LASTNAME` varchar(255) DEFAULT NULL,
+  `REGISTRATION` varchar(255) DEFAULT NULL,
+  `QUALIFICATIONS` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`DOCTORID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `doctorentity` WRITE;
+INSERT INTO `doctorentity` VALUES 
+(1,'Peter','Lee','S18018','MBBS'),
+(2,'Cindy','Leong','S64921','BMedSc'),
+(3,'Matthew','Liu','S38101','MBBS');
+UNLOCK TABLES;
+
+CREATE TABLE `patiententity` (
+  `PATIENTID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `FIRSTNAME` varchar(255) DEFAULT NULL,
+  `LASTNAME` varchar(255) DEFAULT NULL,
+  `GENDER` varchar(255) DEFAULT NULL,
+  `AGE` int(11) DEFAULT NULL,
+  `IDENTITYNUMBER` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`PATIENTID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `patiententity` WRITE;
+INSERT INTO `patiententity` VALUES 
+(1,'Tony','Teo','Male',44,'S7483027A','87297373','11 Tampines Ave 3'),
+(2,'Wendy','Tan','Female',35,'S8381028X','97502837','15 Computing Drive');
+UNLOCK TABLES;
+
+CREATE TABLE `consultationentity` (
+  `PATIENTENTITY_IDENTITYNUMBER` varchar(255),
+  `DOCTORENTITY_DOCTORID` bigint(20),
+  `QUEUENUMBER` int(11),
+  PRIMARY KEY (`QUEUENUMBER`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
